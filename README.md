@@ -406,11 +406,15 @@ El código actual es:
 
 - Sí está el script del proveedor.
 - No hay unidades de anuncio visibles en el código.
-- No hay consentimiento específico para anuncios.
-- No hay política de cookies o consentimiento de usuarios completamente aplicada.
+- La política de privacidad informa sobre el posible uso de cookies e identificadores por Google y enlaza sus opciones de configuración.
+- No hay un mecanismo de consentimiento específico para anuncios implementado en la aplicación.
 - No hay evidencia de aprobación por parte de Google ni de configuración de anuncios activos.
 
 > Esto debe tratarse como una integración de script presente, no como un sitio con anuncios aprobados ni publicitados.
+
+## Contacto
+
+Para consultas sobre privacidad: [silvio.campe.12@gmail.com](mailto:silvio.campe.12@gmail.com).
 
 ## Seguridad y privacidad
 
@@ -492,13 +496,12 @@ El código actual es:
 
 ## Recomendaciones antes de publicar
 
-1. revisar y completar un correo real de contacto en [privacidad.html](privacidad.html)
-2. validar que `SB_URL` y `SB_KEY` correspondan al proyecto real
-3. confirmar que `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` viven solo en Supabase
-4. revisar si el proyecto se publicará bajo HTTPS forzado en Netlify
-5. decidir si se desea activar anuncios o no; si se activan, completar consentimiento y política
-6. agregar protección anti-abuso y límites antes de abrir la app a usuarios reales
-7. documentar procedimientos de backup y restauración antes de cambiar producciones
+1. validar que `SB_URL` y `SB_KEY` correspondan al proyecto real
+2. confirmar que `SUPABASE_URL` y `SUPABASE_SERVICE_ROLE_KEY` viven solo en Supabase
+3. revisar si el proyecto se publicará bajo HTTPS forzado en Netlify
+4. decidir si se desea activar anuncios o no; si se activan, completar el consentimiento aplicable
+5. agregar protección anti-abuso y límites antes de abrir la app a usuarios reales
+6. documentar procedimientos de backup y restauración antes de cambiar producciones
 
 ## Troubleshooting
 
