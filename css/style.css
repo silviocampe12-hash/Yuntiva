@@ -205,7 +205,7 @@ body {
 
 @media (max-width: 700px) {
     .intro-mon {
-        --intro-mon-final: 12vh;
+        --intro-mon-final: 15vh;
     }
 
     .intro-scene img {
