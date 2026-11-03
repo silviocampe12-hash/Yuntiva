@@ -90,6 +90,159 @@ body {
     padding: 16px 16px 110px;
 }
 
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 100001;
+    overflow: hidden;
+    background: var(--pri);
+    color: #12314A;
+    opacity: 1;
+    transition: opacity 0.35s ease;
+}
+
+.intro.is-leaving {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.intro-scene {
+    position: absolute;
+    inset: 0;
+    isolation: isolate;
+}
+
+.intro-scene picture {
+    position: absolute;
+    inset: 0;
+    display: block;
+}
+
+.intro-scene img {
+    position: absolute;
+    top: 36%;
+    left: 50%;
+    display: block;
+    width: 34vw;
+    max-width: 650px;
+    max-height: 76vh;
+    height: auto;
+    object-fit: contain;
+    transform: translate(-50%, -50%);
+}
+
+.intro-mon {
+    z-index: 2;
+    animation: monIntro 3.5s cubic-bezier(0.22, 0.75, 0.2, 1) both;
+    will-change: transform;
+}
+
+.intro-mon img {
+    top: 36%;
+    width: 14vw;
+    max-width: 260px;
+}
+
+.intro-vac {
+    z-index: 1;
+    animation: vacIntro 0.7s ease-out both;
+}
+
+.intro-vac img {
+    width: 34vw;
+    max-width: 650px;
+}
+
+.intro-copy {
+    position: absolute;
+    z-index: 3;
+    left: 50%;
+    bottom: calc(26px + env(safe-area-inset-bottom, 0px));
+    display: grid;
+    gap: 4px;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+.intro-copy b {
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.intro-copy span {
+    color: #12314A;
+    font-size: 17px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.intro-skip {
+    position: absolute;
+    z-index: 4;
+    top: calc(14px + env(safe-area-inset-top, 0px));
+    right: 16px;
+    padding: 9px 14px;
+    border: 1px solid rgba(18, 49, 74, 0.16);
+    border-radius: 99px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #12314A;
+    font-size: 14px;
+}
+
+@keyframes monIntro {
+    0% {
+        transform: translate3d(0, 110vh, 0);
+    }
+    36%,
+    43% {
+        transform: translate3d(0, -35vh, 0);
+    }
+    100% {
+        transform: translate3d(0, 36vh, 0);
+    }
+}
+
+@media (max-width: 700px) {
+    .intro-scene img {
+        max-height: 72vh;
+    }
+
+    .intro-mon img {
+        width: 23vw;
+        max-width: 120px;
+    }
+
+    .intro-vac img {
+        width: 65vw;
+        max-width: 340px;
+    }
+}
+
+@keyframes vacIntro {
+    from {
+        opacity: 0.65;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .intro-mon,
+    .intro-vac {
+        animation: none;
+        will-change: auto;
+    }
+
+    .intro-mon {
+        transform: translateY(24vh);
+    }
+
+    .intro {
+        transition-duration: 0.01ms;
+    }
+}
+
 
 /* -----------------------------------------
    3. TIPOGRAFÍA Y TEXTOS

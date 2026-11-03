@@ -88,6 +88,45 @@ function copy(t,msg){
   toast(msg||"Copiado")}
 var LOGO = '<img src="./img/logo.png" alt="Yuntiva" style="width:40px;height:40px;object-fit:contain;vertical-align:middle;">';
 
+function showIntro(){
+  var intro=document.createElement("section");
+  intro.id="intro";
+  intro.className="intro";
+  intro.setAttribute("role","dialog");
+  intro.setAttribute("aria-modal","true");
+  intro.setAttribute("aria-label","Introducción a Yuntiva");
+  intro.innerHTML=
+    '<div class="intro-scene" aria-hidden="true">'+
+      '<picture class="intro-mon">'+
+        '<source media="(max-width: 700px)" srcset="./img/mon.intro.1080.png?v=4">'+
+        '<img src="./img/mon.intro.1920.png?v=4" alt="" fetchpriority="high" decoding="async">'+
+      '</picture>'+
+      '<picture class="intro-vac">'+
+        '<source media="(max-width: 700px)" srcset="./img/vac.intro.1080.png?v=4">'+
+        '<img src="./img/vac.intro.1920.png?v=4" alt="" fetchpriority="high" decoding="async">'+
+      '</picture>'+
+    '</div>'+
+    '<div class="intro-copy"><b>Yuntiva</b><span>Dividí gastos sin vueltas</span></div>'+
+    '<button class="intro-skip" type="button">Omitir intro</button>';
+  var app=document.getElementById("app"),skipTimer;
+  app.inert=true;
+  app.setAttribute("aria-hidden","true");
+  document.body.appendChild(intro);
+
+  function closeIntro(){
+    if(intro.classList.contains("is-leaving"))return;
+    clearTimeout(skipTimer);
+    intro.classList.add("is-leaving");
+    app.inert=false;
+    app.removeAttribute("aria-hidden");
+    setTimeout(function(){intro.remove()},350);
+  }
+
+  intro.querySelector(".intro-skip").addEventListener("click",closeIntro);
+  intro.querySelector(".intro-skip").focus();
+  skipTimer=setTimeout(closeIntro,window.matchMedia("(prefers-reduced-motion: reduce)").matches?2500:3900);
+}
+
 function render(){
   var a=document.getElementById("app");
   a.innerHTML=cur&&G()?group():home();
@@ -561,5 +600,6 @@ function boot(){
     if(!r.data){toast("No encontramos ese grupo o el enlace fue revocado");render();return}
     joining=r.data;joining.shareToken=token;joining.remote=true;renderJoin()
   }).catch(function(e){console.error("No se pudo abrir el grupo compartido:",e);toast("No se pudo abrir el grupo: "+e.message);render()})}
+showIntro();
 boot();
 setInterval(function(){if(cur&&!draft)pull().catch(function(e){console.error("No se pudo actualizar el grupo:",e)})},5000);

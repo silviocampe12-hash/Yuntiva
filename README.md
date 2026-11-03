@@ -32,6 +32,7 @@ La aplicación no procesa pagos ni integra transferencias reales; solo calcula s
 - OCR de tickets mediante Tesseract.js
 - selección de zona del ticket y lectura de nombres y precios
 - acceso a cámara y selección de fotos desde galería
+- introducción animada al iniciar, adaptada a móvil y escritorio
 - modo PWA con manifest, iconos y favicon
 - páginas legales de privacidad y términos
 
@@ -65,6 +66,10 @@ La aplicación no procesa pagos ni integra transferencias reales; solo calcula s
 │   ├── imgapple-touch-icon.png
 │   ├── imgicon-192.png
 │   ├── imgicon-512.png
+│   ├── vac.intro.1080.png
+│   ├── vac.intro.1920.png
+│   ├── mon.intro.1080.png
+│   ├── mon.intro.1920.png
 ├── js/
 │   └── app.js
 ├── supabase/
@@ -86,6 +91,7 @@ La aplicación no procesa pagos ni integra transferencias reales; solo calcula s
 - [manifest.json](manifest.json): configuración de PWA. Define nombre, color, start_url, display y iconos.
 - [css/style.css](css/style.css): estilos principales, tema claro/oscuro, adaptabilidad y componentes UI de la aplicación.
 - [js/app.js](js/app.js): lógica principal de la app: estado local, grupos, gastos, balances, enlace compartido, OCR, cámara, lectura de tickets, sincronización y UI.
+- [img](img): incluye las ilustraciones PNG transparentes de la introducción; las versiones `1080` se usan en móvil y las `1920` en escritorio.
 - [supabase/config.toml](supabase/config.toml): configuración del proyecto local para la CLI de Supabase.
 - [supabase/functions/groups/index.ts](supabase/functions/groups/index.ts): Edge Function que toma la acción del navegador, valida el token y opera sobre la tabla privada.
 - [supabase/migrations/20261029000000_private_link_groups.sql](supabase/migrations/20261029000000_private_link_groups.sql) y [supabase/migrations/20261030000000_rename_groups_to_yuntiva.sql](supabase/migrations/20261030000000_rename_groups_to_yuntiva.sql): crean y renombran la tabla compartida como `public.yuntiva_groups`, con RLS y permisos restringidos a `service_role`.
