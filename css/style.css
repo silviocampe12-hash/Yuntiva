@@ -133,6 +133,7 @@ body {
 
 .intro-mon {
     z-index: 2;
+    --intro-mon-final: 36vh;
     animation: monIntro 3.5s cubic-bezier(0.22, 0.75, 0.2, 1) both;
     will-change: transform;
 }
@@ -198,11 +199,15 @@ body {
         transform: translate3d(0, -35vh, 0);
     }
     100% {
-        transform: translate3d(0, 36vh, 0);
+        transform: translate3d(0, var(--intro-mon-final), 0);
     }
 }
 
 @media (max-width: 700px) {
+    .intro-mon {
+        --intro-mon-final: 8vh;
+    }
+
     .intro-scene img {
         max-height: 72vh;
     }
@@ -235,7 +240,7 @@ body {
     }
 
     .intro-mon {
-        transform: translateY(24vh);
+        transform: translateY(var(--intro-mon-final));
     }
 
     .intro {
